@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 2 - SVG Coding</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      color: darkred;
+      text-align: center;
+      text-decoration: underline;
+    }
+    .box {
+      background: white;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    svg {
+      display: block;
+      margin: auto;
+      max-width: 100%;
+      height: auto;
+    }
+    p {
+      text-align: center;
+      color: gray;
+      font-size: 14px;
+    }
+
+    /* hover effects */
+    .contour:hover { stroke-width: 6; }
+    .part:hover { opacity: 0.6; }
+    .state:hover circle { stroke-width: 7; }
+    .edge:hover path { stroke-width: 5; }
+    .branch:hover rect { stroke-width: 8; }
+    .btn { cursor: pointer; }
+    .btn:hover { opacity: 0.5; }
+  </style>
+</head>
+<body>
+
+<div style="position: absolute; top: 10px; right: 15px; font-size: 12px; color: #555;">Aastha Sinha 1012434</div>
+
+<h1>Assignment 2 - SVG Coding</h1>
+
+<!-- Image 016 -->
+<div class="box">
+  <h2>Image 016 - Gradient Descent</h2>
+  <svg id="gd" width="900" height="675" viewBox="0 0 1800 1350" style="cursor: pointer">
+    <defs>
+      <marker id="arrow1" markerUnits="userSpaceOnUse" markerWidth="40" markerHeight="30" refX="40" refY="15" orient="auto">
+        <path d="M0,0 L40,15 L0,30 z" fill="black"/>
+      </marker>
+      <marker id="redarrow" markerUnits="userSpaceOnUse" markerWidth="24" markerHeight="24" refX="21" refY="12" orient="auto">
+        <path d="M3,3 L21,12 L3,21" fill="none" stroke="#e8332a" stroke-width="4"/>
+      </marker>
+    </defs>
+
+    <!-- lines -->
+    <g fill="none" stroke="#7070f0" stroke-width="2.5">
+      <circle class="contour" cx="873" cy="625" r="22"/>
+      <ellipse class="contour" cx="876" cy="627" rx="119" ry="130" transform="rotate(-8 876 627)"/>
+      <ellipse class="contour" cx="885" cy="631" rx="215" ry="231" transform="rotate(-8 885 631)"/>
+      <ellipse class="contour" cx="897" cy="638" rx="302" ry="330" transform="rotate(-8 897 638)"/>
+      <ellipse class="contour" cx="905" cy="645" rx="370" ry="405" transform="rotate(-8 905 645)"/>
+      <ellipse class="contour" cx="915" cy="652" rx="430" ry="467" transform="rotate(-8 915 652)"/>
+      <ellipse class="contour" cx="932" cy="660" rx="502" ry="545" transform="rotate(-8 932 660)"/>
+      <ellipse class="contour" cx="944" cy="669" rx="566" ry="614" transform="rotate(-8 944 669)"/>
+    </g>
+
+    <!-- axes -->
+    <line x1="497" y1="1073" x2="1725" y2="340" stroke="black" stroke-width="4" marker-end="url(#arrow1)"/>
+    <line x1="497" y1="1073" x2="103" y2="418" stroke="black" stroke-width="4" marker-end="url(#arrow1)"/>
+    <text x="1690" y="325" font-size="64">β<tspan dy="16" font-size="46">0</tspan></text>
+    <text x="112" y="395" font-size="64">β<tspan dy="16" font-size="46">1</tspan></text>
+
+    <!-- red path -->
+    <polyline id="path" points="503,1077 660,970 740,885 785,825 815,775"
+              fill="none" stroke="#e8332a" stroke-width="4"
+              marker-mid="url(#redarrow)" marker-end="url(#redarrow)"/>
+
+    <!-- labels -->
+    <g font-size="40" fill="#333">
+      <text x="446" y="1084">x<tspan dy="12" font-size="30">0</tspan></text>
+      <text x="598" y="952">x<tspan dy="12" font-size="30">1</tspan></text>
+      <text x="692" y="868">x<tspan dy="12" font-size="30">2</tspan></text>
+      <text x="742" y="806">x<tspan dy="12" font-size="30">3</tspan></text>
+      <text x="773" y="756">x<tspan dy="12" font-size="30">4</tspan></text>
+    </g>
+  </svg>
+  <p>Hover on lines, click to replay the path</p>
+</div>
+
+<!-- Image 013 -->
+<div class="box">
+  <h2>Image 013 - Box Plot</h2>
+  <svg width="700" height="350" viewBox="0 0 700 350" text-anchor="middle">
+    <defs>
+      <marker id="arrow2" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto">
+        <path d="M0,0 L10,4 L0,8 z" fill="black"/>
+      </marker>
+    </defs>
+
+    <!-- border and number line -->
+    <rect x="15" y="8" width="670" height="308" fill="none" stroke="#333"/>
+    <g font-size="12">
+      <text x="15" y="336">-4</text>
+      <text x="99" y="336">-3</text>
+      <text x="182" y="336">-2</text>
+      <text x="266" y="336">-1</text>
+      <text x="350" y="336">0</text>
+      <text x="434" y="336">1</text>
+      <text x="518" y="336">2</text>
+      <text x="601" y="336">3</text>
+      <text x="685" y="336">4</text>
+    </g>
+
+    <!-- whiskers -->
+    <g class="part">
+      <title>Whiskers: Q1 - 1.5*IQR to Q3 + 1.5*IQR</title>
+      <line x1="124" y1="167" x2="293" y2="167" stroke="#6b6bff" stroke-width="1.5"/>
+      <line x1="407" y1="167" x2="576" y2="167" stroke="#6b6bff" stroke-width="1.5"/>
+      <line x1="124" y1="139" x2="124" y2="195" stroke="black" stroke-width="2.5"/>
+      <line x1="576" y1="139" x2="576" y2="195" stroke="black" stroke-width="2.5"/>
+    </g>
+
+    <!-- box -->
+    <g class="part">
+      <title>Q1 = -0.67, Median = 0, Q3 = 0.67</title>
+      <rect x="293" y="121" width="114" height="93" fill="#ff9e9e" stroke="#555" stroke-width="1.5"/>
+      <line x1="350" y1="121" x2="350" y2="214" stroke="yellow" stroke-width="2"/>
+    </g>
+
+    <!-- outliers -->
+    <g class="part" fill="#99cc99" stroke="#5b9a5b">
+      <title>Outliers</title>
+      <circle cx="98" cy="167" r="5"/>
+      <circle cx="117" cy="167" r="5"/>
+      <circle cx="586" cy="167" r="5"/>
+      <circle cx="597" cy="167" r="5"/>
+    </g>
+
+    <!-- IQR bracket -->
+    <text x="350" y="48" font-size="17">Interquartile Range</text>
+    <text x="350" y="70" font-size="17">(IQR)</text>
+    <path d="M293,77 V91 M293,84 H407 M407,77 V91" stroke="black" stroke-width="1.5" fill="none"/>
+
+    <!-- outlier arrows -->
+    <text x="104" y="106" font-size="17">Outliers</text>
+    <text x="592" y="106" font-size="17">Outliers</text>
+    <line x1="104" y1="113" x2="104" y2="155" stroke="black" stroke-width="2" marker-end="url(#arrow2)"/>
+    <line x1="592" y1="113" x2="592" y2="155" stroke="black" stroke-width="2" marker-end="url(#arrow2)"/>
+
+    <!-- bottom labels -->
+    <g font-size="15">
+      <text x="124" y="220">"Minimum"</text>
+      <text x="124" y="240">(Q1 - 1.5*IQR)</text>
+      <text x="576" y="220">"Maximum"</text>
+      <text x="576" y="240">(Q3 + 1.5*IQR)</text>
+      <text x="291" y="242">Q1</text>
+      <text x="409" y="242">Q3</text>
+    </g>
+    <text x="350" y="230" font-size="14">Median</text>
+    <text x="291" y="259" font-size="10">(25th Percentile)</text>
+    <text x="409" y="259" font-size="10">(75th Percentile)</text>
+  </svg>
+  <p>Hover to see values</p>
+</div>
+
+<!-- Image 012 -->
+<div class="box">
+  <h2>Image 012 - State Machine</h2>
+  <svg width="1000" height="431" viewBox="0 0 1265 545" font-family="Courier New, monospace" font-size="32" text-anchor="middle">
+    <defs>
+      <marker id="arrow3" markerUnits="userSpaceOnUse" markerWidth="22" markerHeight="18" refX="21" refY="9" orient="auto">
+        <path d="M0,0 L22,9 L0,18 L5,9 z" fill="black"/>
+      </marker>
+    </defs>
+
+    <!-- arrows between states -->
+    <g fill="none" stroke="black" stroke-width="2.5">
+      <g class="edge">
+        <title>State 1, insert 100 -> State 0</title>
+        <path d="M1141,136 C1141,-5 452,-5 452,136" marker-end="url(#arrow3)"/>
+      </g>
+      <g class="edge">
+        <title>State 0, insert 50 -> State 1</title>
+        <path d="M572,256 H1021" marker-end="url(#arrow3)"/>
+      </g>
+      <g class="edge">
+        <title>State 1, insert 50 -> State 0</title>
+        <path d="M1141,376 C1141,600 537,560 537,341" marker-end="url(#arrow3)"/>
+      </g>
+      <g class="edge">
+        <title>State 0, insert 100 -> State 0</title>
+        <path d="M332,256 C130,256 182,525 320,525 C440,525 452,460 452,376" marker-end="url(#arrow3)"/>
+      </g>
+    </g>
+
+    <!-- white boxes behind labels -->
+    <rect x="614" y="9" width="372" height="36" fill="white"/>
+    <rect x="617" y="250" width="276" height="36" fill="white"/>
+    <rect x="692" y="509" width="332" height="36" fill="white"/>
+    <rect x="4" y="407" width="352" height="36" fill="white"/>
+
+    <text x="800" y="38">100/(0, "coke", 50)</text>
+    <text x="755" y="279">50/(50, --, 0)</text>
+    <text x="858" y="538">50/(0, "coke", 0)</text>
+    <text x="180" y="436">100/(0, "coke", 0)</text>
+
+    <!-- states -->
+    <g class="state">
+      <title>State 0: no credit</title>
+      <circle cx="452" cy="256" r="120" fill="#dae8fc" stroke="#6c8ebf" stroke-width="3"/>
+      <text x="452" y="266">0</text>
+    </g>
+    <g class="state">
+      <title>State 1: 50 credited</title>
+      <circle cx="1141" cy="256" r="120" fill="#f8cecc" stroke="#b85450" stroke-width="3"/>
+      <text x="1141" y="266">1</text>
+    </g>
+  </svg>
+  <p>Hover to highlight</p>
+</div>
+
+<!-- Image 001 -->
+<div class="box">
+  <h2>Image 001 - Concept Map</h2>
+  <svg width="1000" height="506" viewBox="0 0 2570 1300" font-size="52" text-anchor="middle">
+    <defs>
+      <marker id="arrow4" markerUnits="userSpaceOnUse" markerWidth="40" markerHeight="30" refX="40" refY="15" orient="auto">
+        <path d="M0,0 L40,15 L0,30 z" fill="black"/>
+      </marker>
+    </defs>
+
+    <!-- top node -->
+    <rect x="1037" y="116" width="516" height="202" rx="101" fill="#e0e0e0" stroke="black" stroke-width="3"/>
+    <text x="1295" y="207">Data Driven</text>
+    <text x="1295" y="265">World</text>
+    <text x="1295" y="417">learns</text>
+
+    <!-- arrows -->
+    <g stroke="black" stroke-width="3" marker-end="url(#arrow4)">
+      <line x1="1128" y1="318" x2="515" y2="690"/>
+      <line x1="1240" y1="318" x2="1037" y2="690"/>
+      <line x1="1352" y1="318" x2="1553" y2="690"/>
+      <line x1="1462" y1="318" x2="2075" y2="690"/>
+      <line x1="347" y1="892" x2="347" y2="1122"/>
+      <line x1="979" y1="892" x2="979" y2="1122"/>
+      <line x1="1611" y1="892" x2="1611" y2="1122"/>
+      <line x1="2243" y1="892" x2="2243" y2="1122"/>
+    </g>
+
+    <!-- topic boxes -->
+    <g class="branch">
+      <rect x="89" y="690" width="517" height="202" fill="cyan" stroke="black" stroke-width="3"/>
+      <text x="347" y="782">Algorithms and Data</text>
+      <text x="347" y="840">Structures</text>
+      <rect x="175" y="1122" width="345" height="86" fill="white" stroke="black" stroke-width="3"/>
+      <text x="347" y="1183">Week 1 to 6</text>
+    </g>
+    <g class="branch">
+      <rect x="721" y="690" width="517" height="202" fill="#f7768a" stroke="black" stroke-width="3"/>
+      <text x="979" y="782">Object Oriented</text>
+      <text x="979" y="840">Programming</text>
+      <rect x="807" y="1122" width="345" height="86" fill="white" stroke="black" stroke-width="3"/>
+      <text x="979" y="1183">Week 4 to 8</text>
+    </g>
+    <g class="branch">
+      <rect x="1353" y="690" width="517" height="202" fill="#ffa660" stroke="black" stroke-width="3"/>
+      <text x="1611" y="811">State Machine</text>
+      <rect x="1439" y="1122" width="345" height="86" fill="white" stroke="black" stroke-width="3"/>
+      <text x="1611" y="1183">Week 8</text>
+    </g>
+    <g class="branch">
+      <rect x="1985" y="690" width="517" height="202" fill="#79c545" stroke="black" stroke-width="3"/>
+      <text x="2243" y="782">Introduction to</text>
+      <text x="2243" y="840">Machine Learning</text>
+      <rect x="2071" y="1122" width="345" height="86" fill="white" stroke="black" stroke-width="3"/>
+      <text x="2243" y="1183">Week 9 to 11</text>
+    </g>
+  </svg>
+  <p>Hover to highlight</p>
+</div>
+
+<!-- Image 008 -->
+<div class="box">
+  <h2>Image 008 - Stack</h2>
+  <svg width="360" height="508" viewBox="0 0 180 254" font-size="11">
+    <defs>
+      <linearGradient id="red" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ff2a2a"/>
+        <stop offset="0.45" stop-color="#ff8f8f"/>
+        <stop offset="1" stop-color="#e01010"/>
+      </linearGradient>
+      <marker id="arrow5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <path d="M0,0 L8,3 L0,6 z" fill="black"/>
+      </marker>
+    </defs>
+
+    <!-- blocks on top -->
+    <rect x="8" y="9" width="72" height="24" fill="url(#red)" stroke="darkred"/>
+    <rect x="100" y="9" width="72" height="24" fill="url(#red)" stroke="darkred"/>
+
+    <!-- push button -->
+    <g class="btn" onclick="push()">
+      <rect x="20" y="36" width="60" height="46" fill="transparent"/>
+      <line x1="40" y1="38" x2="74" y2="80" stroke="black" marker-end="url(#arrow5)"/>
+      <text x="51" y="73" text-anchor="end">push</text>
+    </g>
+
+    <!-- pop button -->
+    <g class="btn" onclick="pop()">
+      <rect x="100" y="36" width="54" height="48" fill="transparent"/>
+      <line x1="106" y1="82" x2="126" y2="40" stroke="black" marker-end="url(#arrow5)"/>
+      <text x="130" y="73">pop</text>
+    </g>
+
+    <!-- container -->
+    <path d="M45,88 V230 Q45,240 55,240 H125 Q135,240 135,230 V88" fill="none" stroke="#9999ff" stroke-width="4"/>
+
+    <!-- blocks inside -->
+    <rect id="b1" x="54" y="162" width="72" height="25" fill="url(#red)" stroke="darkred"/>
+    <rect id="b2" x="54" y="126" width="72" height="25" fill="url(#red)" stroke="darkred"/>
+    <rect id="b3" x="54" y="90" width="72" height="25" fill="url(#red)" stroke="darkred"/>
+    <text id="peek" x="141" y="106">peek</text>
+
+    <polygon points="55,216 90,199 125,216" fill="#9999ff"/>
+  </svg>
+  <p>Click push or pop</p>
+</div>
+
+<script>
+  // stack push and pop
+  var count = 3;
+  var peekY = [178, 142, 106];
+
+  function showBlocks() {
+    for (var i = 1; i <= 3; i++) {
+      if (i <= count) {
+        document.getElementById("b" + i).style.display = "inline";
+      } else {
+        document.getElementById("b" + i).style.display = "none";
+      }
+    }
+    var peek = document.getElementById("peek");
+    if (count == 0) {
+      peek.style.display = "none";
+    } else {
+      peek.style.display = "inline";
+      peek.setAttribute("y", peekY[count - 1]);
+    }
+  }
+
+  function push() {
+    if (count < 3) {
+      count++;
+      showBlocks();
+    }
+  }
+
+  function pop() {
+    if (count > 0) {
+      count--;
+      showBlocks();
+    }
+  }
+
+  // gradient descent: redraw the red path one step at a time
+  var points = ["503,1077", "660,970", "740,885", "785,825", "815,775"];
+
+  document.getElementById("gd").onclick = function () {
+    var n = 2;
+    var path = document.getElementById("path");
+    path.setAttribute("points", points.slice(0, n).join(" "));
+    var timer = setInterval(function () {
+      n++;
+      path.setAttribute("points", points.slice(0, n).join(" "));
+      if (n == points.length) {
+        clearInterval(timer);
+      }
+    }, 400);
+  };
+</script>
+
+</body>
+</html>
